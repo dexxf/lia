@@ -1,10 +1,6 @@
-from datetime import datetime, UTC
 from uuid import UUID
 
-
-
 from sqlalchemy import (
-    DateTime,
     ForeignKey,
     String,
     UniqueConstraint
@@ -23,11 +19,11 @@ class OAuthDataEntity(Base):
             "oauth_provider",
             "provider_id",
             name="uk_oauth_provider",
-        )
+        ),
     )
 
     id: Mapped[UUID] = mapped_column(
-        name="oauth_data_id",
+        "oauth_data_id",
         primary_key=True,
     )
 
@@ -48,10 +44,4 @@ class OAuthDataEntity(Base):
     provider_id: Mapped[str] = mapped_column(
         String(255),
         nullable=False,
-    )
-
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
-        nullable=False,
-        default=lambda: datetime.now(UTC),
     )

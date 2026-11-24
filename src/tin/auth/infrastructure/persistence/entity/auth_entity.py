@@ -1,7 +1,6 @@
-from datetime import datetime
 from uuid import UUID
 
-from sqlalchemy import DateTime, String
+from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from tin.auth.infrastructure.persistence.entity.oauth_data_entity import OAuthDataEntity
@@ -30,14 +29,4 @@ class AuthEntity(Base):
     oauth_data: Mapped[list[OAuthDataEntity]] = relationship(
         back_populates="auth",
         cascade="all, delete-orphan",
-    )
-
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
-        nullable=False,
-    )
-
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
-        nullable=False,
     )
