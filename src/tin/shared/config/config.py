@@ -14,6 +14,10 @@ class Settings(BaseSettings):
 
     DATABASE_URL: SecretStr
 
+    JWT_SECRET_KEY: SecretStr
+    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+
 
 @lru_cache
 def get_settings() -> Settings:
