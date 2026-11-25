@@ -7,7 +7,7 @@ from uuid import UUID, uuid4
 from tin.auth.domain.value_objects.oauth_provider import OAuthProvider
 
 @final
-@dataclass
+@dataclass(frozen=True)
 class OAuthData:
     id: UUID
     oauth_provider: OAuthProvider
