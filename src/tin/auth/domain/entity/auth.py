@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import datetime
 from typing import final
 from uuid import UUID, uuid4
 from tin.auth.domain.entity.oauth_data import OAuthData
@@ -68,8 +68,10 @@ class Auth:
     def update_email(self, new_email: str, now: datetime) -> None:
         if new_email is None:
             raise ValueError("new_email must not be null")
+        if now is None:
+            raise ValueError("now must not be null")
         self.email = new_email
-        self.updated_at = now or datetime.now(UTC)
+        self.updated_at = now
 
     def link_oauth_provider(self, oauth_data: OAuthData, now: datetime) -> bool:
         if oauth_data is None:
