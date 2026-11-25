@@ -4,7 +4,7 @@ from uuid import UUID
 import jwt
 
 from tin.auth.application.exceptions.invalid_access_token_error import InvalidAccessTokenError
-from tin.auth.application.port.out.access_token_provider import AccessTokenProvider
+from tin.auth.application.port.outbound.access_token_provider import AccessTokenProvider
 
 
 class JwtAccessTokenProvider(AccessTokenProvider):
