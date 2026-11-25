@@ -31,12 +31,13 @@ class Auth:
         self._oauth_datas = list(self._oauth_datas)
 
     @classmethod
-    def create_new(cls, email: str, now: datetime) -> Auth:
+    def create_new(cls, email: str, now: datetime, password_hash: str | None = None) -> Auth:
         return cls(
             id=uuid4(),
             email=email,
             created_at=now,
             updated_at=now,
+            password_hash=password_hash
         )
 
     @classmethod

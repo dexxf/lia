@@ -23,7 +23,7 @@ class AuthEntity(Base):
 
     password_hash: Mapped[str] = mapped_column(
         String(255),
-        nullable=False,
+        nullable=True,
     )
 
     oauth_data: Mapped[list[OAuthDataEntity]] = relationship(
