@@ -8,19 +8,17 @@ from tin.shared.config.config import settings
 
 class AuthContainer:
 
-    def __init__(self):
-
+    def __init__(self) -> None:
         password_hasher = PasswordHash.recommended()
         self.pwd_lib_password_hasher = PwdlibPasswordHasher(password_hasher)
 
         self.email_validator = EmailValidatorAdapter()
 
         self.access_token_provider = JwtAccessTokenProvider(
-            settings.JWT_SECRET_KEY,
+            settings.JWT_SECRET_KEY.get_secret_value(),
             settings.JWT_ALGORITHM,
             settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES,
             "access")
-
 
 
 container = AuthContainer()
