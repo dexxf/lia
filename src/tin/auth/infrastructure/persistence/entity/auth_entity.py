@@ -1,11 +1,15 @@
+from __future__ import annotations
+
 from uuid import UUID
+from typing import TYPE_CHECKING
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from tin.auth.infrastructure.persistence.entity.oauth_data_entity import OAuthDataEntity
 from tin.shared.persistence.base import Base
 
+if TYPE_CHECKING:
+    from tin.auth.infrastructure.persistence.entity.oauth_data_entity import OAuthDataEntity
 
 class AuthEntity(Base):
     __tablename__ = "auth"

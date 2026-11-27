@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from uuid import UUID
+from typing import TYPE_CHECKING
 
 from sqlalchemy import (
     ForeignKey,
@@ -7,9 +10,10 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from tin.auth.infrastructure.persistence.entity.auth_entity import AuthEntity
 from tin.shared.persistence.base import Base
 
+if TYPE_CHECKING:
+    from tin.auth.infrastructure.persistence.entity.auth_entity import AuthEntity
 
 class OAuthDataEntity(Base):
     __tablename__ = "oauth_data"
